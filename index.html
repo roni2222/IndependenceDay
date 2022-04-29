@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" translate="no">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -10,25 +10,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script> <!--ג'ייקו'רי זה קובץ אחד ויחיד (תמיד הקובץ הזה שיש לו גרסאות שונות) וזה בעצם ג'ווסקריפט ופה שמנו בגרסה 3.6.0-->
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> <!--ג'ייקו'רי יואיי זה קובץ אחד ויחיד (תמיד הקובץ הזה שיש לו גרסאות שונות) חייב לשים קודם כל קישור לג'ייקו'רי כדי להשתמש בקישור הזה ליואיי ופה שמנו בגרסה 1.13.1-->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> <!-- סי אס אס של ג'ייק'רי יואיי, תמיד נשתמש בזה עוזר לאפקטים גם הוא קובץ אחד ויחיד לפי גרסה-->
-    
+
     <script>
         $(document).ready(function () {
             var count = 1;
             setInterval(function () {
 
-                if (count < 75)
-                {
+                if (count < 75) {
                     $('#numbers').text(count);
                     count++;
                 }
-                else
-                {
+                else {
                     $('#numbers').css('font-size', '70px');
                     $('#numbers').css('color', 'blue');
                     clearInterval;
                 }
 
-            }, 50); 
+            }, 50);
         });
     </script>
 
@@ -60,7 +58,6 @@
             background-position: center center;
             background-attachment: fixed;
         }
-
     </style>
 
 </head>
