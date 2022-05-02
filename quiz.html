@@ -18,7 +18,7 @@
         var chiefNamesOrdered;
 
         function CreatDropDownListNames(numberOfChief) {
-            var dropDownListNames = '<select id=chief' + numberOfChief + ' class="dropDownListColors">';
+            var dropDownListNames = '<select id=chief' + numberOfChief + ' class="dropDownListColors"><option value="">בחר/י רמטכ"ל</option>';
             debugger;
             $(chiefNamesOrdered).each(function (index) {
                 dropDownListNames += '<option value=' + chiefNamesOrdered[index].ChiefNumber + '>' + chiefNamesOrdered[index].FullName + '</option>';
@@ -97,10 +97,12 @@
 
             $(document).on('change', ".dropDownListColors", function () {
                 debugger;
-                if (this.value == $(this).get(0).id.substr(5))
-                    $(this).parent().parent().css('background-color', '#99ff66');
-                else
-                    $(this).parent().parent().css('background-color', '#ff4d4d');
+                if (this.value != "") {
+                    if (this.value == $(this).get(0).id.substr(5))
+                        $(this).parent().parent().css('background-color', '#99ff66');
+                    else
+                        $(this).parent().parent().css('background-color', '#ff4d4d');
+                }
             });
         });
 
@@ -162,7 +164,7 @@
 
 <body>
     <br/>
-    <div id="chiefTable" dir="rtl" style="font-family:Felix007 Medium Regular; font-size:16px;"></div>
+    <div id="chiefTable" dir="rtl" style="font-family:Felix007 Medium Regular; font-size:16px; font-weight:bold"></div>
 
     <button class="button" onclick="location.href='index.html'" style="float:right;">לדף הבית</button>
 
