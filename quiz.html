@@ -1,11 +1,170 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" translate="no">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>יום העצמאות</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script> <!--ג'ייקו'רי זה קובץ אחד ויחיד (תמיד הקובץ הזה שיש לו גרסאות שונות) וזה בעצם ג'ווסקריפט ופה שמנו בגרסה 3.6.0-->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> <!--ג'ייקו'רי יואיי זה קובץ אחד ויחיד (תמיד הקובץ הזה שיש לו גרסאות שונות) חייב לשים קודם כל קישור לג'ייקו'רי כדי להשתמש בקישור הזה ליואיי ופה שמנו בגרסה 1.13.1-->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> <!-- סי אס אס של ג'ייק'רי יואיי, תמיד נשתמש בזה עוזר לאפקטים גם הוא קובץ אחד ויחיד לפי גרסה-->
+
+    <!--חידון הרמטכלים-->
+    <script type="text/javascript">
+        $.support.cors = true; // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+
+        var chiefNamesOrdered;
+
+        function CreatDropDownListNames(numberOfChief) {
+            var dropDownListNames = '<select id=chief' + numberOfChief + ' class="dropDownListColors">';
+            debugger;
+            $(chiefNamesOrdered).each(function (index) {
+                dropDownListNames += '<option value=' + chiefNamesOrdered[index].ChiefNumber + '>' + chiefNamesOrdered[index].FullName + '</option>';
+            });
+
+            dropDownListNames += '</select>';
+            return dropDownListNames;
+        }
+
+        $(document).ready(function () {
+            var j1 = $.ajax({
+                url: 'https://bsite.net/hinuch/ChiefWebForm.aspx/OrderChiefBYLetter',
+                type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים
+                dataType: 'json', //הסוג הוא אובייקט
+                contentType: 'application/json',
+                crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+
+                success: function (SuccessInChief) {
+                    chiefNamesOrdered = SuccessInChief.d;
+                },
+
+                error: function (errorInChief) {
+                    debugger;
+                    alert('failure');
+                }
+            });
+
+            var j2 = $.ajax({
+                url: 'https://bsite.net/hinuch/ChiefWebForm.aspx/GetChiefTableByLine',
+                type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים
+                dataType: 'json', //הסוג הוא אובייקט
+                contentType: 'application/json',
+                crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+
+                success: function (SuccessInChief) {
+
+                    var tableChiefs = '<table cellpadding="0" cellspacing="0" border="1">' +
+                        '<tr>' +
+                        '<td>מספר הרמטכ"ל</td>' +
+                        '<td>שנות כהונה</td>' +
+                        '<td>שם הרמטכ"ל</td>' +
+                        '</tr>';
+
+                    $(SuccessInChief.d).each(function (index) {
+                        tableChiefs += '<tr>' +
+                            '<td>' + SuccessInChief.d[index].ChiefNumber + '</td>' +
+                            '<td>' + SuccessInChief.d[index].Years + '</td>' +
+                            '<td>' + CreatDropDownListNames(SuccessInChief.d[index].ChiefNumber) + '</td>' +
+                            '</tr>';
+                    });
+
+
+                    tableChiefs += '</table>';
+                    $('#chiefTable').html(tableChiefs);
+                },
+
+                error: function (errorInChief) {
+                    debugger;
+                    alert('failure');
+                }
+            });
+
+            $.when(j1, j2).then(function (a1, a2) {
+                ///alert('Both j1 and j2 succeedeed!');
+            }, function (jqXHR, textStatus, errorThrown) {
+                var x1 = j1;
+                var x2 = j2;
+                if (x1.readyState != 4) {
+                    x1.abort();
+                }
+                if (x2.readyState != 4) {
+                    x2.abort();
+                }
+                ///alert('Either j1 or j2 failed!');
+            });
+
+            $(document).on('change', ".dropDownListColors", function () {
+                debugger;
+                if (this.value == $(this).get(0).id.substr(5))
+                    $(this).parent().parent().css('background-color', '#99ff66');
+                else
+                    $(this).parent().parent().css('background-color', '#ff4d4d');
+            });
+        });
+
+
+    </script>
+
+
+
+    <style>
+        /*הוספת פונטים שהורדתי למחשב*/
+        @font-face {
+            font-family: "Felix007 Medium Regular";
+            src: url("fonts/Felix007 Medium Regular.ttf");
+        }
+
+        .Font {
+            font-family: "Felix007 Medium Regular";
+        }
+
+        @font-face {
+            font-family: "habibi-regular-fm";
+            src: url("fonts/habibi-regular-fm.ttf");
+        }
+
+        .Font {
+            font-family: "habibi-regular-fm";
+        }
+
+        html {
+            min-height: 100%;
+            background-image: url(images/background.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        /*כפתור*/
+        .button {
+            background-color: #ffffb3;
+            border: none;
+            color: black;
+            padding: 5px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-family: Felix007 Medium Regular;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            box-shadow: 7px 7px 7px 3px #ffcc00;
+            /*position: fixed;
+            bottom: 0;*/
+        }
+    </style>
+
 </head>
+
 <body>
+
+    <div id="chiefTable" dir="rtl" style="font-family:Felix007 Medium Regular; font-size:18px;"></div>
+
+    <button class="button" onclick="location.href='index.html'" style="float:right;">לדף הבית</button>
 
 </body>
 </html>
