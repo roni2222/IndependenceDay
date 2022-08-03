@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" translate="no">
+<html xmlns="http://www.w3.org/1999/xhtml" translate="no">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -15,11 +15,213 @@
     <script type="text/javascript">
         $.support.cors = true; // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
 
-        var chiefNamesOrdered;
+        var chiefNamesOrdered = [
+            {
+                ChiefNumber: 22,
+                FullName: "אביב כוכבי"
+            },
+            {
+                ChiefNumber: 14,
+                FullName: "אהוד ברק"
+            },
+            {
+                ChiefNumber: 15,
+                FullName: "אמנון ליפקין- שחק"
+            },
+            {
+                ChiefNumber: 20,
+                FullName: "בנימין גנץ"
+            },
+            {
+                ChiefNumber: 19,
+                FullName: "גבי אשכזי"
+            },
+            {
+                ChiefNumber: 21,
+                FullName: "גדי איזנקוט"
+            },
+            {
+                ChiefNumber: 9,
+                FullName: "דוד אלעזר"
+            },
+            {
+                ChiefNumber: 18,
+                FullName: "דן חלוץ"
+            },
+            {
+                ChiefNumber: 13,
+                FullName: "דן שומרון"
+            },
+            {
+                ChiefNumber: 8,
+                FullName: "חיים בר לב"
+            },
+            {
+                ChiefNumber: 5,
+                FullName: "חיים לסקוב"
+            },
+            {
+                ChiefNumber: 2,
+                FullName: "יגאל ידין"
+            },
+            {
+                ChiefNumber: 1,
+                FullName: "יעקוב דורי"
+            },
+            {
+                ChiefNumber: 7,
+                FullName: "יצחק רבין"
+            },
+            {
+                ChiefNumber: 10,
+                FullName: "מרדכי גור"
+            },
+            {
+                ChiefNumber: 3,
+                FullName: "מרדכי מקלף"
+            },
+            {
+                ChiefNumber: 4,
+                FullName: "משה דיין"
+            },
+            {
+                ChiefNumber: 17,
+                FullName: "משה יעלון"
+            },
+            {
+                ChiefNumber: 12,
+                FullName: "משה לוי"
+            },
+            {
+                ChiefNumber: 6,
+                FullName: "צבי צור"
+            },
+            {
+                ChiefNumber: 11,
+                FullName: "רפאל איתן"
+            },
+            {
+                ChiefNumber: 16,
+                FullName: "שאול מופז"
+            }
+        ];
 
+        var ChiefTable = [
+            {
+                ChiefNumber: 1,
+                FullName: "יעקוב דורי",
+                Years: "1948-1949"
+            },
+            {
+                ChiefNumber: 2,
+                FullName: "יגאל ידין",
+                Years: "1949-1952"
+            },
+            {
+                ChiefNumber: 3,
+                FullName: "מרדכי מקלף",
+                Years: "1952-1953"
+            },
+            {
+                ChiefNumber: 4,
+                FullName: "משה דיין",
+                Years: "1953-1958"
+            },
+            {
+                ChiefNumber: 5,
+                FullName: "חיים לסקוב",
+                Years: "1958-1961"
+            },
+            {
+                ChiefNumber: 6,
+                FullName: "צבי צור",
+                Years: "1961-1964"
+            },
+            {
+                ChiefNumber: 7,
+                FullName: "יצחק רבין",
+                Years: "1964-1968"
+            },
+            {
+                ChiefNumber: 8,
+                FullName: "חיים בר לב",
+                Years: "1968-1972"
+            },
+            {
+                ChiefNumber: 9,
+                FullName: "דוד אלעזר",
+                Years: "1972-1974"
+            },
+            {
+                ChiefNumber: 10,
+                FullName: "מרדכי גור",
+                Years: "1974-1978"
+            },
+            {
+                ChiefNumber: 11,
+                FullName: "רפאל איתן",
+                Years: "1978-1983"
+            },
+            {
+                ChiefNumber: 12,
+                FullName: "משה לוי",
+                Years: "1983-1987"
+            },
+            {
+                ChiefNumber: 13,
+                FullName: "דן שומרון",
+                Years: "1987-1991"
+            },
+            {
+                ChiefNumber: 14,
+                FullName: "אהוד ברק",
+                Years: "1991-1995"
+            },
+            {
+                ChiefNumber: 15,
+                FullName: "אמנון ליפקין- שחק",
+                Years: "1995-1998"
+            },
+            {
+                ChiefNumber: 16,
+                FullName: "שאול מופז",
+                Years: "1998-2002"
+            },
+            {
+                ChiefNumber: 17,
+                FullName: "משה יעלון",
+                Years: "2002-2005"
+            },
+            {
+                ChiefNumber: 18,
+                FullName: "דן חלוץ",
+                Years: "2005-2007"
+            },
+            {
+                ChiefNumber: 19,
+                FullName: "גבי אשכזי",
+                Years: "2007-2011"
+            },
+            {
+                ChiefNumber: 20,
+                FullName: "בנימין גנץ",
+                Years: "2011-2015"
+            },
+            {
+                ChiefNumber: 21,
+                FullName: "גדי איזנקוט",
+                Years: "2015-2019"
+            },
+            {
+                ChiefNumber: 22,
+                FullName: "אביב כוכבי",
+                Years: "2019-2023"
+            }
+        ]
+        ;
         function CreatDropDownListNames(numberOfChief) {
-            var dropDownListNames = '<select id=chief' + numberOfChief + ' class="dropDownListColors"><option value="">בחר/י רמטכ"ל</option>';
-            debugger;
+            var dropDownListNames = '<select id=chief' + numberOfChief + ' class="dropDownListColors dropDownListChiefs"><option value=""><div class="dropDownOptions">בחר/י רמטכ"ל</div></option>';
+            //debuggerdropDownListColors
             $(chiefNamesOrdered).each(function (index) {
                 dropDownListNames += '<option value=' + chiefNamesOrdered[index].ChiefNumber + '>' + chiefNamesOrdered[index].FullName + '</option>';
             });
@@ -29,58 +231,59 @@
         }
 
         $(document).ready(function () {
-            var j1 = $.ajax({
-                url: 'https://bsite.net/hinuch/ChiefWebForm.aspx/OrderChiefBYLetter',
-                type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים
-                dataType: 'json', //הסוג הוא אובייקט
-                contentType: 'application/json',
-                crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+            //var j1 = $.ajax({
+            //    url: 'https://bsite.net/hinuch/ChiefWebForm.aspx/OrderChiefBYLetter',
+            //    type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים
+            //    dataType: 'json', //הסוג הוא אובייקט
+            //    contentType: 'application/json',
+            //    crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
 
-                success: function (SuccessInChief) {
-                    chiefNamesOrdered = SuccessInChief.d;
-                },
+            //    success: function (SuccessInChief) {
+            //        chiefNamesOrdered = SuccessInChief.d;
+            //    },
 
-                error: function (errorInChief) {
-                    debugger;
-                    alert('failure');
-                }
-            });
+            //    error: function (errorInChief) {
+            //        debugger;
+            //        alert('failure');
+            //    }
+            //});
 
-            var j2 = $.ajax({
-                url: 'https://bsite.net/hinuch/ChiefWebForm.aspx/GetChiefTableByLine',
-                type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים
-                dataType: 'json', //הסוג הוא אובייקט
-                contentType: 'application/json',
-                crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+            //var j2 = $.ajax({
+            //    url: 'https://bsite.net/hinuch/ChiefWebForm.aspx/GetChiefTableByLine',
+            //    type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים
+            //    dataType: 'json', //הסוג הוא אובייקט
+            //    contentType: 'application/json',
+            //    crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
 
-                success: function (SuccessInChief) {
+            //    success: function (SuccessInChief) {
 
-                    var tableChiefs = '<table cellpadding="0" cellspacing="0" border="1">' +
-                        '<tr>' +
-                        '<td>מספר הרמטכ"ל</td>' +
-                        '<td>שנות כהונה</td>' +
-                        '<td>שם הרמטכ"ל</td>' +
-                        '</tr>';
+            //        var tableChiefs = '<table cellpadding="0" cellspacing="0" border="1">' +
+            //            '<tr>' +
+            //            '<td>מספר הרמטכ"ל</td>' +
+            //            '<td>שנות כהונה</td>' +
+            //            '<td>שם הרמטכ"ל</td>' +
+            //            '</tr>';
 
-                    $(SuccessInChief.d).each(function (index) {
-                        tableChiefs += '<tr>' +
-                            '<td>' + SuccessInChief.d[index].ChiefNumber + '</td>' +
-                            '<td>' + SuccessInChief.d[index].Years + '</td>' +
-                            '<td>' + CreatDropDownListNames(SuccessInChief.d[index].ChiefNumber) + '</td>' +
-                            '</tr>';
-                    });
+            //        $(SuccessInChief.d).each(function (index) {
+            //            tableChiefs += '<tr>' +
+            //                '<td>' + SuccessInChief.d[index].ChiefNumber + '</td>' +
+            //                '<td>' + SuccessInChief.d[index].Years + '</td>' +
+            //                '<td>' + CreatDropDownListNames(SuccessInChief.d[index].ChiefNumber) + '</td>' +
+            //                '</tr>';
+            //        });
 
 
-                    tableChiefs += '</table>';
-                    $('#chiefTable').html(tableChiefs);
-                },
+            //        tableChiefs += '</table>';
+            //        $('#chiefTable').html(tableChiefs);
+            //    },
 
-                error: function (errorInChief) {
-                    debugger;
-                    alert('failure');
-                }
-            });
+            //    error: function (errorInChief) {
+            //        debugger;
+            //        alert('failure');
+            //    }
+            //});
 
+            /*
             $.when(j1, j2).then(function (a1, a2) {
                 ///alert('Both j1 and j2 succeedeed!');
             }, function (jqXHR, textStatus, errorThrown) {
@@ -94,6 +297,37 @@
                 }
                 ///alert('Either j1 or j2 failed!');
             });
+            */
+
+            var tableChiefs = '<table cellpadding="0" cellspacing="0" border="1">' +
+                '<tr>' +
+                '<td>מספר הרמטכ"ל</td>' +
+                '<td>שנות כהונה</td>' +
+                '<td>שם הרמטכ"ל</td>' +
+                '</tr>';
+
+            $.each(ChiefTable, function (i, Chief) {
+                tableChiefs += '<tr>' +
+                    '<td>' + Chief.ChiefNumber + '</td>' +
+                    '<td>' + Chief.Years + '</td>' +
+                    '<td>' + CreatDropDownListNames(Chief.ChiefNumber) + '</td>' +
+                    '</tr>';
+            });
+
+            /*
+            (ChiefTable).each(function (index) {
+                tableChiefs += '<tr>' +
+                    '<td>' + ChiefTable[index].ChiefNumber + '</td>' +
+                    '<td>' + ChiefTable[index].Years + '</td>' +
+                    '<td>' + CreatDropDownListNames(ChiefTable[index].ChiefNumber) + '</td>' +
+                    '</tr>';
+            });
+            */
+
+            tableChiefs += '</table>';
+            
+            $('#chiefTable').html(tableChiefs);
+
 
             $(document).on('change', ".dropDownListColors", function () {
                 debugger;
@@ -151,12 +385,22 @@
             display: inline-block;
             font-family: Felix007 Medium Regular;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
             margin: 4px 2px;
             cursor: pointer;
             box-shadow: 7px 7px 7px 3px #0080ff;
             /*position: fixed;
             bottom: 0;*/
+        }
+
+        .dropDownListChiefs option {
+            font-family: Felix007 Medium Regular !important;
+            font-size: 14px !important;
+        }
+
+        .dropDownOptions {
+            font-family: Felix007 Medium Regular;
+            font-size: 14px;
         }
     </style>
 
